@@ -5,8 +5,8 @@ const main = function() {
   let typeOfRectangle = process.argv[2];
   let width = +process.argv[3];
   let height = +process.argv[4];
-  let patternGenerator = getRectanglePattern(typeOfRectangle);
-  console.log(patternGenerator(width,height));
+  let patternGenerator = getRectanglePattern(typeOfRectangle,width,height);
+  console.log(patternGenerator);
 }
 
 main();
