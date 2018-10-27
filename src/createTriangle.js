@@ -34,7 +34,11 @@ const getGeneratedPattern = function(pattern){
   }
 }
 
-let pattern = process.argv[2];
-let heightOfTriangle = process.argv[3];
-let patternGenerator = getGeneratedPattern(pattern);
-console.log(patternGenerator(heightOfTriangle));
+const main = function() {
+  let pattern = process.argv[2];
+  let heightOfTriangle = process.argv[3];
+  let patternGenerator = getGeneratedPattern(pattern);
+  console.log(patternGenerator(heightOfTriangle));
+}
+
+main();
