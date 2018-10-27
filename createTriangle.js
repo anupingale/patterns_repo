@@ -1,10 +1,9 @@
-const library = require("./src/patternLib.js");
-const {getTrianglePattern, heightOfTriangle} = library;
+const generateTriangle = require("./src/patternLib.js").generateTriangle;
 
 const main = function() {
   let pattern = process.argv[2];
   let heightOfTriangle = process.argv[3];
-  console.log(getTrianglePattern(pattern,heightOfTriangle));
+  console.log(generateTriangle(pattern,heightOfTriangle));
 }
 
 main();
