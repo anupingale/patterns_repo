@@ -25,7 +25,7 @@ const generateRight = function(height){
   return generateTriangle;
 }
 
-const getTrianglePattern = function(pattern,height){
+const generateTriangle = function(pattern,height){
   if(pattern=="left"){
     return generateLeft(height);
   }
@@ -91,7 +91,7 @@ const createEmptyRect = function(width,height){
   return requiredRectangle;
 }
 
-const getRectanglePattern = function(typeOfRectangle,width,height) {
+const generateRectangle = function(typeOfRectangle,width,height) {
   if(typeOfRectangle =="filled"){
     return createFilledRect(width,height);
   }
@@ -174,7 +174,7 @@ const createAngledDiamond = function(height,upperTriangle,lowerTriangle){
   return upperTriangle+middleLine+"\n"+lowerTriangle;
 }
 
-const getDiamondPattern = function(pattern,height){
+const generateDiamond = function(pattern,height){
   if(height %2 == 0){
     height = height-1;
   }
@@ -198,7 +198,7 @@ const getDiamondPattern = function(pattern,height){
 
 module.exports = {generateLeft,
   generateRight,
-  getTrianglePattern,
+  generateTriangle,
   repeatCharacter,
   repeatStar,
   repeatDash,
@@ -206,11 +206,11 @@ module.exports = {generateLeft,
   createFilledRect,
   createAlternateRect,
   createEmptyRect,
-  getRectanglePattern,
+  generateRectangle,
   halfOfHeight,
   generateSymbolPattern,
   generateLines,
   createFilledDiamond,
   createHollowDiamond,
   createAngledDiamond,
-  getDiamondPattern}
+  generateDiamond}
