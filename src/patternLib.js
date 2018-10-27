@@ -25,12 +25,12 @@ const generateRight = function(height){
   return generateTriangle;
 }
 
-const getTrianglePattern = function(pattern){
+const getTrianglePattern = function(pattern,height){
   if(pattern=="left"){
-    return generateLeft;
+    return generateLeft(height);
   }
   if(pattern=="right"){
-    return generateRight;
+    return generateRight(height);
   }
 }
 
@@ -91,15 +91,15 @@ const createEmptyRect = function(width,height){
   return requiredRectangle;
 }
 
-const getRectanglePattern = function(typeOfRectangle) {
+const getRectanglePattern = function(typeOfRectangle,width,height) {
   if(typeOfRectangle =="filled"){
-    return createFilledRect;
+    return createFilledRect(width,height);
   }
   if(typeOfRectangle =="empty"){
-    return createEmptyRect;
+    return createEmptyRect(width,height);
   }
   if(typeOfRectangle =="alternative"){
-    return createAlternateRect;
+    return createAlternateRect(width,height);
   }
 
 }
@@ -174,8 +174,7 @@ const createAngledDiamond = function(height,upperTriangle,lowerTriangle){
   return upperTriangle+middleLine+"\n"+lowerTriangle;
 }
 
-const generateDiamond = function(height,generatePattern){
-  let diamond ="";
+const getDiamondPattern = function(pattern,height){
   if(height %2 == 0){
     height = height-1;
   }
@@ -185,38 +184,33 @@ const generateDiamond = function(height,generatePattern){
   upperTriangle += generateSymbolPattern("*",1);
   upperTriangle += "\n";
   lowerTriangle = upperTriangle;
-  diamond = generatePattern(height,upperTriangle,lowerTriangle);
-  return diamond;
-}
 
-const getDiamondPattern = function(pattern){
   if(pattern == "filled"){
-    return createFilledDiamond;
+    return createFilledDiamond(height,upperTriangle,lowerTriangle);
   }
   if(pattern == "hollow"){
-    return createHollowDiamond;
+    return createHollowDiamond(height,upperTriangle,lowerTriangle);
   }
   if(pattern == "angled"){
-    return createAngledDiamond;
+    return createAngledDiamond(height,upperTriangle,lowerTriangle);
   }
 }
 
 module.exports = {generateLeft,
-generateRight,
-getTrianglePattern,
-repeatCharacter,
-repeatStar,
-repeatDash,
-starAtStartEnd,
-createFilledRect,
-createAlternateRect,
-createEmptyRect,
-getRectanglePattern,
-halfOfHeight,
-generateSymbolPattern,
-generateLines,
-createFilledDiamond,
-createHollowDiamond,
-createAngledDiamond,
-generateDiamond,
-getDiamondPattern}
+  generateRight,
+  getTrianglePattern,
+  repeatCharacter,
+  repeatStar,
+  repeatDash,
+  starAtStartEnd,
+  createFilledRect,
+  createAlternateRect,
+  createEmptyRect,
+  getRectanglePattern,
+  halfOfHeight,
+  generateSymbolPattern,
+  generateLines,
+  createFilledDiamond,
+  createHollowDiamond,
+  createAngledDiamond,
+  getDiamondPattern}
