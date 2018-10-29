@@ -37,14 +37,6 @@ const generateTriangle = function(pattern,height){
   }
 }
 
-const repeatStar = function(width){
-  return repeatCharacter("*",width);
-}
-
-const repeatDash = function(width){
-  return repeatCharacter("-",width);
-}
-
 const starAtStartEnd = function(widthForStar){
   let line = "*";
   for(index=2; index<widthForStar; index++){
@@ -58,7 +50,7 @@ const createFilledRect = function(width,height){
   let delimiter = "\n";
   let requiredRectangle = "";
   for(let lineIndex=0; lineIndex<height; lineIndex++){
-    requiredRectangle += repeatStar(width) + delimiter;
+    requiredRectangle += repeatCharacter("*",width) + delimiter;
   }
   return requiredRectangle;
 }
@@ -69,11 +61,11 @@ const createAlternateRect= function(width,height){
   for(let lineIndex2=height; lineIndex2>0; lineIndex2--){
     requiredRectangle += delimiter;
     delimiter = "\n";
-    requiredRectangle += repeatStar(width);
+    requiredRectangle += repeatCharacter("*",width);
     lineIndex2=lineIndex2-1;
     if(lineIndex2>0){
       requiredRectangle += delimiter
-      requiredRectangle += repeatDash(width);
+      requiredRectangle += repeatCharacter("-",width);
     }
   }
   return requiredRectangle;
@@ -82,11 +74,11 @@ const createAlternateRect= function(width,height){
 const createEmptyRect = function(width,height){
   let requiredRectangle = "";
   let delimiter = "\n";
-  requiredRectangle = repeatStar(width) + delimiter;
+  requiredRectangle = repeatCharacter("*",width) + delimiter;
   for(let lineIndex3 = 2; lineIndex3 < height; lineIndex3++ ){
     requiredRectangle += starAtStartEnd(width) + delimiter;
   }
-  requiredRectangle += repeatStar(width);
+  requiredRectangle += repeatCharacter("*",width);
   return requiredRectangle;
 }
 
@@ -198,9 +190,6 @@ const generateDiamond = function(pattern,height){
 module.exports = {generateLeft,
   generateRight,
   generateTriangle,
-  repeatCharacter,
-  repeatStar,
-  repeatDash,
   starAtStartEnd,
   createFilledRect,
   createAlternateRect,
