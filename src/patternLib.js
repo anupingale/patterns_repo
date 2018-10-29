@@ -1,3 +1,6 @@
+const patternUtil = require('./patternUtil.js');
+const {repeatCharacter} = patternUtil;
+
 const generateLeft = function(height){
   let generateTriangle="";
   for(let starIndex = 1; starIndex <= height; starIndex++){
@@ -32,10 +35,6 @@ const generateTriangle = function(pattern,height){
   if(pattern=="right"){
     return generateRight(height);
   }
-}
-
-const repeatCharacter = function(character,width){
-  return new Array(width).fill(character).join("");
 }
 
 const repeatStar = function(width){
