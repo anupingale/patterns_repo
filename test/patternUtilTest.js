@@ -1,7 +1,7 @@
 const assert = require("assert");
 const printLog = require("../testScript/logReporter.js").printLog;
 const patternUtil = require("../src/patternUtil.js");
-const {starAtStartEnd, halfOfHeight, repeatCharacter} = patternUtil;
+const {generateLines, starAtStartEnd, halfOfHeight, repeatCharacter} = patternUtil;
 
 const checkAssert = function(funcName,args,actual,expected) {
   printLog(funcName,args,actual,expected);
@@ -40,3 +40,19 @@ checkAssert("halfOfHeight",["5"],halfOfHeight(5),expected);
 expected = 5;
 checkAssert("halfOfHeight",["10"],halfOfHeight(10),expected);
 
+
+/*-------------------------Test cases for generateLines----------------------------*/
+expected = "***";
+checkAssert("generateLines",["*","*","*",3],generateLines("*","*","*",3),expected);
+
+expected = "* *";
+checkAssert("generateLines",["*"," ","*",3],generateLines("*"," ","*",3),expected);
+
+expected = "-*****-";
+checkAssert("generateLines",["-","*","-",7],generateLines("-","*","-",7),expected);
+
+expected = " ********* ";
+checkAssert("generateLines",[" ","*"," ",11],generateLines(" ","*"," ",11),expected);
+
+expected = "*---------------@";
+checkAssert("generateLines",["*","-","@",17],generateLines("*","-","@",17),expected);
