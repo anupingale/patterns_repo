@@ -21,4 +21,13 @@ const starAtStartEnd = function(widthForStar){
   return line;
 }
 
-module.exports = {generateLines, starAtStartEnd, halfOfHeight, repeatCharacter};
+const generateSymbolPattern = function(symbol,length){
+  let symbolRow = "";
+  for(let symbolIndex = 1; symbolIndex <= length; symbolIndex++){
+    symbolRow += symbol;
+  }
+  return symbolRow;
+}
+
+
+module.exports = { generateSymbolPattern, generateLines, starAtStartEnd, halfOfHeight, repeatCharacter};

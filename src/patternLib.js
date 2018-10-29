@@ -1,5 +1,5 @@
 const patternUtil = require('./patternUtil.js');
-const {generateLines, halfOfHeight, starAtStartEnd, repeatCharacter} = patternUtil;
+const {generateSymbolPattern, generateLines, halfOfHeight, starAtStartEnd, repeatCharacter} = patternUtil;
 
 const generateLeft = function(height){
   let generateTriangle="";
@@ -84,14 +84,6 @@ const generateRectangle = function(typeOfRectangle,width,height) {
     return createAlternateRect(width,height);
   }
 
-}
-
-const generateSymbolPattern = function(symbol,length){
-  let symbolRow = "";
-  for(let symbolIndex = 1; symbolIndex <= length; symbolIndex++){
-    symbolRow += symbol;
-  }
-  return symbolRow;
 }
 
 const createFilledDiamond = function(height,upperTriangle,lowerTriangle){

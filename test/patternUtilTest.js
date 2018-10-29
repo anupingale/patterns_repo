@@ -1,7 +1,7 @@
 const assert = require("assert");
 const printLog = require("../testScript/logReporter.js").printLog;
 const patternUtil = require("../src/patternUtil.js");
-const {generateLines, starAtStartEnd, halfOfHeight, repeatCharacter} = patternUtil;
+const {generateLines, generateSymbolPattern, starAtStartEnd, halfOfHeight, repeatCharacter} = patternUtil;
 
 const checkAssert = function(funcName,args,actual,expected) {
   printLog(funcName,args,actual,expected);
@@ -56,3 +56,15 @@ checkAssert("generateLines",[" ","*"," ",11],generateLines(" ","*"," ",11),expec
 
 expected = "*---------------@";
 checkAssert("generateLines",["*","-","@",17],generateLines("*","-","@",17),expected);
+
+/*--------------------------Test cases for generatesymbolPattern--------------------*/
+
+expected = "*";
+checkAssert("generateSymbol",["*",1],generateSymbolPattern("*",1),expected);
+
+expected = "****";
+checkAssert("generateSymbol",["*",5],generateSymbolPattern("*",4),expected);
+
+expected = "----------"
+checkAssert("generateSymbol",["-",10],generateSymbolPattern("-",10),expected);
+
