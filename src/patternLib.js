@@ -1,5 +1,5 @@
 const patternUtil = require('./patternUtil.js');
-const {repeatCharacter} = patternUtil;
+const {starAtStartEnd, repeatCharacter} = patternUtil;
 
 const generateLeft = function(height){
   let generateTriangle="";
@@ -36,15 +36,6 @@ const generateTriangle = function(pattern,height){
     return generateRight(height);
   }
 }
-
-const starAtStartEnd = function(widthForStar){
-  let line = "*";
-  for(index=2; index<widthForStar; index++){
-    line = line + " ";
-  }
-  line = line + "*";
-  return line;
-} 
 
 const createFilledRect = function(width,height){
   let delimiter = "\n";
