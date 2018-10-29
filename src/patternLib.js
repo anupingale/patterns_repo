@@ -1,5 +1,5 @@
 const patternUtil = require('./patternUtil.js');
-const {starAtStartEnd, repeatCharacter} = patternUtil;
+const {halfOfHeight, starAtStartEnd, repeatCharacter} = patternUtil;
 
 const generateLeft = function(height){
   let generateTriangle="";
@@ -86,10 +86,6 @@ const generateRectangle = function(typeOfRectangle,width,height) {
 
 }
 
-const halfOfHeight = function(height){
-  return height/2;
-}
-
 const generateSymbolPattern = function(symbol,length){
   let symbolRow = "";
   for(let symbolIndex = 1; symbolIndex <= length; symbolIndex++){
@@ -101,7 +97,7 @@ const generateSymbolPattern = function(symbol,length){
 const generateLines = function(firstSymbol,middleSymbol,lastSymbol,length){
   let line ="";
   line += firstSymbol;
-  line += generateSymbolPattern(middleSymbol,length-2);
+  line += repeatCharacter(middleSymbol,length-2);
   line += lastSymbol;
   return line;
 }
