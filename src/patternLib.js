@@ -159,13 +159,6 @@ const generateDiamond = function(patternSpecification){
 }
 
 module.exports = {generateLeft,
-  generateRight,
   generateTriangle,
-  createFilledRect,
-  createAlternateRect,
-  createEmptyRect,
   generateRectangle,
-  createFilledDiamond,
-  createHollowDiamond,
-  createAngledDiamond,
   generateDiamond}
