@@ -12,6 +12,12 @@ const leftJustify = function(message,width) {
   return message+spacedLine;
 }
 
+const centerJustify = function(message,width) {
+  let spaceCount = width - message.length;
+  let spacedLine = new Array(spaceCount/2).fill(" ").join("");
+  return spacedLine+message+spacedLine;
+}
+
 const generateLines = function(firstSymbol,middleSymbol,lastSymbol,length){
   let line ="";
   line += firstSymbol;
@@ -49,4 +55,4 @@ const readUserInput = function(args) {
   return { type : patternType, height : height, width : width}
 }
 
-module.exports = {rightJustify, leftJustify, readUserInput, generateSymbolPattern, generateLines, starAtStartEnd, halfOfHeight, repeatCharacter};
+module.exports = {centerJustify, rightJustify, leftJustify, readUserInput, generateSymbolPattern, generateLines, starAtStartEnd, halfOfHeight, repeatCharacter};

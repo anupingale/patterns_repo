@@ -3,6 +3,7 @@ const printLog = require("../testScript/logReporter.js").printLog;
 const patternUtil = require("../src/patternUtil.js");
 const { rightJustify,
   leftJustify,
+  centerJustify,
   generateLines,
   readUserInput,
   generateSymbolPattern,
@@ -128,3 +129,20 @@ checkAssert("rightJustify",["*",2],rightJustify("*",2),expected);
 
 expected = "   ***"
 checkAssert("rightJustify",["***",6],rightJustify("***",6),expected);
+
+/*------------------------Test cases for centerJustify----------------------------*/
+
+expected = "  ";
+checkAssert("centerJustify",["",2],centerJustify("",2),expected);
+
+expected = "*";
+checkAssert("centerJustify",["*",1],centerJustify("*",1),expected);
+
+expected = " * ";
+checkAssert("checkAssert",["*",3],centerJustify("*",3),expected);
+
+expected = "   ***   ";
+checkAssert("checkAssert",["***",9],centerJustify("***",9),expected);
+
+expected = " ***** ";
+checkAssert("checkAssert",["*****",7],centerJustify("*****",7),expected);
