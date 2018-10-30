@@ -41,7 +41,7 @@ let actualOutput_right_3 = generateTriangle({ type : "right",height : 3 })
 let expectedOutput_right_3 = "";
 expectedOutput_right_3 += "  *\n"; 
 expectedOutput_right_3 += " **\n";
-expectedOutput_right_3 += "***\n";
+expectedOutput_right_3 += "***";
 checkAssert("generateTriangle",["right",3],actualOutput_right_3,expectedOutput_right_3);
 
 let actualOutput_right_5 = generateTriangle({ type : "right",height : 5 });
@@ -50,7 +50,7 @@ expectedOutput_right_5 += "    *\n";
 expectedOutput_right_5 += "   **\n";
 expectedOutput_right_5 += "  ***\n";
 expectedOutput_right_5 += " ****\n";
-expectedOutput_right_5 += "*****\n";
+expectedOutput_right_5 += "*****";
 checkAssert("generateTriangle",["right",5],actualOutput_right_5,expectedOutput_right_5);
 
 let actualOutput_right_6 = generateTriangle({ type : "right",height : 6 });
@@ -60,7 +60,7 @@ expectedOutput_right_6 +="    **\n";
 expectedOutput_right_6 +="   ***\n";
 expectedOutput_right_6 +="  ****\n";
 expectedOutput_right_6 +=" *****\n";
-expectedOutput_right_6 +="******\n";
+expectedOutput_right_6 +="******";
 checkAssert("generateTriangle",["right",6],actualOutput_right_6,expectedOutput_right_6);
 
 let actualOutput_filled_10_4 = generateRectangle( {type : "filled", height :10, width : 4});
