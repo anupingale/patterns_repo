@@ -1,6 +1,7 @@
 const patternUtil = require('./patternUtil.js');
 const {readUserInput,
   leftJustify,
+  rightJustify,
   generateSymbolPattern,
   generateLines,
   halfOfHeight,
@@ -17,17 +18,12 @@ const generateLeftTriangle = function(height){
 }
 
 const generateRightTriangle = function(height){
-  let generateTriangle="";
-  let spaceCount=height-1;
+  let generateTriangle = [];
   for(let starIndex = 1; starIndex <= height; starIndex++){
-    for(let noOfSpaces = spaceCount; noOfSpaces >= 1; noOfSpaces--){
-      generateTriangle +=" ";
-    }
-    generateTriangle+= repeatCharacter("*",starIndex);
-    generateTriangle+="\n";
-    spaceCount--;
+    let line = repeatCharacter("*",starIndex);
+    generateTriangle.push(rightJustify(line,height));
   }
-  return generateTriangle;
+  return generateTriangle.join("\n");
 }
 
 const generateTriangle = function(patternSpecification){
