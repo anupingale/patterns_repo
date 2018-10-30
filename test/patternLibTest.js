@@ -63,37 +63,37 @@ expectedOutput_right_6 +=" *****\n";
 expectedOutput_right_6 +="******\n";
 checkAssert("generateTriangle",["right",6],actualOutput_right_6,expectedOutput_right_6);
 
-let actualOutput_filled_10_4 = generateRectangle("filled",10,4);
+let actualOutput_filled_10_4 = generateRectangle( {type : "filled", height :10, width : 4});
 let expectedOutput_filled_10_4 = "";
 expectedOutput_filled_10_4 += "**********\n"; 
 expectedOutput_filled_10_4 += "**********\n"; 
 expectedOutput_filled_10_4 += "**********\n"; 
 expectedOutput_filled_10_4 += "**********\n"; 
-checkAssert("generateRectangle",["filled,10,4"],actualOutput_filled_10_4,expectedOutput_filled_10_4);
+checkAssert("generateRectangle",["filled",10,4],actualOutput_filled_10_4,expectedOutput_filled_10_4);
 
-let actualOutput_filled_5_5 = generateRectangle("filled",5,5);
+let actualOutput_filled_5_5 = generateRectangle( {type : "filled",height :5, width : 5});
 let expectedOutput_filled_5_5 = "";
 expectedOutput_filled_5_5 += "*****\n"; 
 expectedOutput_filled_5_5 += "*****\n"; 
 expectedOutput_filled_5_5 += "*****\n"; 
 expectedOutput_filled_5_5 += "*****\n"; 
 expectedOutput_filled_5_5 += "*****\n"; 
-checkAssert("generateRectangle",["filled,5,5"],actualOutput_filled_5_5,expectedOutput_filled_5_5);
+checkAssert("generateRectangle",["filled",5,5],actualOutput_filled_5_5,expectedOutput_filled_5_5);
 
-let actualOutput_filled_2_2 = generateRectangle("filled",2,2);
+let actualOutput_filled_2_2 = generateRectangle( {type : "filled",height :2, width : 2});
 let expectedOutput_filled_2_2 = "";
 expectedOutput_filled_2_2 += "**\n"
 expectedOutput_filled_2_2 += "**\n";
 checkAssert("generateRectangle",["filled,2,2"],actualOutput_filled_2_2,expectedOutput_filled_2_2);
 
-let actualOutput_empty_2_3 = generateRectangle("filled",2,3);
+let actualOutput_empty_2_3 = generateRectangle( {type : "filled",height :2, width :3});
 let expectedOutput_empty_2_3 = "";
 expectedOutput_empty_2_3 += "**\n"
 expectedOutput_empty_2_3 += "**\n";
 expectedOutput_empty_2_3 += "**\n";
 checkAssert("generateRectangle",["filled,2,3"],actualOutput_empty_2_3,expectedOutput_empty_2_3);
 
-let actualOutput_empty_5_5 =  generateRectangle("empty",5,5);
+let actualOutput_empty_5_5 =  generateRectangle({ type : "empty",height : 5, width : 5 });
 let expectedOutput_empty_5_5 = "";
 expectedOutput_empty_5_5 += "*****\n"; 
 expectedOutput_empty_5_5 += "*   *\n"; 
@@ -102,7 +102,7 @@ expectedOutput_empty_5_5 += "*   *\n";
 expectedOutput_empty_5_5 += "*****"; 
 checkAssert("generateRectangle",["empty,5,5"],actualOutput_empty_5_5,expectedOutput_empty_5_5);
 
-let actualOutput_empty_10_4 = generateRectangle("empty",10,4);
+let actualOutput_empty_10_4 = generateRectangle({type : "empty",height : 10, width : 4});
 let expectedOutput_empty_10_4 = "";
 expectedOutput_empty_10_4 += "**********\n"; 
 expectedOutput_empty_10_4 += "*        *\n"; 
@@ -110,19 +110,19 @@ expectedOutput_empty_10_4 += "*        *\n";
 expectedOutput_empty_10_4 += "**********"; 
 checkAssert("generateRectangle",["empty,10,4"],actualOutput_empty_10_4,expectedOutput_empty_10_4);
 
-let actualOutput_empty_2_2 = generateRectangle("empty",2,2);
+let actualOutput_empty_2_2 = generateRectangle({ type : "empty", height : 2, width : 2 });
 let expectedOutput_empty_2_2 = "";
 expectedOutput_empty_2_2 += "**\n"
 expectedOutput_empty_2_2 += "**";
 checkAssert("generateRectangle",["empty,2,2"],actualOutput_empty_2_2,expectedOutput_empty_2_2);
 
-let actualOutput_alternate_2_2 = generateRectangle("alternative",2,2);
+let actualOutput_alternate_2_2 = generateRectangle({ type : "alternative", height : 2, width : 2});
 let expectedOutput_alternate_2_2 = "";
 expectedOutput_alternate_2_2 += "**\n";
 expectedOutput_alternate_2_2 += "--"
 checkAssert("generateRectangle",["alternative,2,2"],actualOutput_alternate_2_2,expectedOutput_alternate_2_2);
 
-let actualOutput_alternate_5_5 = generateRectangle("alternative",5,5);
+let actualOutput_alternate_5_5 = generateRectangle({ type : "alternative", height : 5, width : 5});
 let expectedOutput_alternate_5_5 = "";
 expectedOutput_alternate_5_5 += "*****\n"; 
 expectedOutput_alternate_5_5 += "-----\n"; 
@@ -131,14 +131,14 @@ expectedOutput_alternate_5_5 += "-----\n";
 expectedOutput_alternate_5_5 += "*****"; 
 checkAssert("generateRectangle",["alternative,5,5"],actualOutput_alternate_5_5,expectedOutput_alternate_5_5);
 
-let actualOutput_alternate_3_3 = generateRectangle("alternative",3,3);
+let actualOutput_alternate_3_3 = generateRectangle({ type : "alternative", height : 3, width : 3});
 let expectedOutput_alternate_3_3 = "";
 expectedOutput_alternate_3_3 += "***\n"; 
 expectedOutput_alternate_3_3 += "---\n"; 
 expectedOutput_alternate_3_3 += "***"; 
 checkAssert("generateRectangle",["alternative,3,3"],actualOutput_alternate_3_3,expectedOutput_alternate_3_3);
 
-let actualOutput_alternate_10_4 = generateRectangle("alternative",10,4);
+let actualOutput_alternate_10_4 = generateRectangle({ type : "alternative", height : 10, width : 4});
 let expectedOutput_alternate_10_4 = "";
 expectedOutput_alternate_10_4 += "**********\n"; 
 expectedOutput_alternate_10_4 += "----------\n"; 

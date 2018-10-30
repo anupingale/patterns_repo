@@ -1,5 +1,5 @@
 const patternUtil = require('./patternUtil.js');
-const {generateSymbolPattern, generateLines, halfOfHeight, starAtStartEnd, repeatCharacter} = patternUtil;
+const {readUserInput, generateSymbolPattern, generateLines, halfOfHeight, starAtStartEnd, repeatCharacter} = patternUtil;
 
 const generateLeft = function(height){
   let generateTriangle="";
@@ -37,7 +37,7 @@ const generateTriangle = function(pattern,height){
   }
 }
 
-const createFilledRect = function(width,height){
+const createFilledRect = function(height,width){
   let delimiter = "\n";
   let requiredRectangle = "";
   for(let lineIndex=0; lineIndex<height; lineIndex++){
@@ -46,7 +46,7 @@ const createFilledRect = function(width,height){
   return requiredRectangle;
 }
 
-const createAlternateRect= function(width,height){
+const createAlternateRect= function(height,width){
   let requiredRectangle = "";
   let delimiter = "";
   for(let lineIndex2=height; lineIndex2>0; lineIndex2--){
@@ -62,7 +62,7 @@ const createAlternateRect= function(width,height){
   return requiredRectangle;
 }
 
-const createEmptyRect = function(width,height){
+const createEmptyRect = function(height,width){
   let requiredRectangle = "";
   let delimiter = "\n";
   requiredRectangle = repeatCharacter("*",width) + delimiter;
@@ -73,14 +73,17 @@ const createEmptyRect = function(width,height){
   return requiredRectangle;
 }
 
-const generateRectangle = function(typeOfRectangle,width,height) {
-  if(typeOfRectangle =="filled"){
+const generateRectangle = function(patternSpecification) {
+  let width = patternSpecification.width;
+  let height = patternSpecification.height;
+
+  if(patternSpecification.type =="filled"){
     return createFilledRect(width,height);
   }
-  if(typeOfRectangle =="empty"){
+  if(patternSpecification.type =="empty"){
     return createEmptyRect(width,height);
   }
-  if(typeOfRectangle =="alternative"){
+  if(patternSpecification.type =="alternative"){
     return createAlternateRect(width,height);
   }
 
@@ -161,14 +164,10 @@ const generateDiamond = function(pattern,height){
 module.exports = {generateLeft,
   generateRight,
   generateTriangle,
-  starAtStartEnd,
   createFilledRect,
   createAlternateRect,
   createEmptyRect,
   generateRectangle,
-  halfOfHeight,
-  generateSymbolPattern,
-  generateLines,
   createFilledDiamond,
   createHollowDiamond,
   createAngledDiamond,
