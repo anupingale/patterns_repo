@@ -10,14 +10,14 @@ const checkAssert = function(funcName,args,actual,expected) {
 
 /*----------Test cases for triangle----------------*/
 
-let actualOutput_left_3 = generateTriangle("left",3)
+let actualOutput_left_3 = generateTriangle({ type : "left",height : 3 });
 let expectedOutput_left_3 = "";
 expectedOutput_left_3 += "*\n"; 
 expectedOutput_left_3 += "**\n";
 expectedOutput_left_3 += "***\n";
 checkAssert("generateTriangle",["left",3],actualOutput_left_3,expectedOutput_left_3);
 
-let actualOutput_left_5 = generateTriangle("left",5);
+let actualOutput_left_5 = generateTriangle({ type : "left",height : 5 });
 let expectedOutput_left_5 = "";
 expectedOutput_left_5 += "*\n"; 
 expectedOutput_left_5 += "**\n";
@@ -26,7 +26,7 @@ expectedOutput_left_5 += "****\n";
 expectedOutput_left_5 += "*****\n";
 checkAssert("generateTriangle",["left",5],actualOutput_left_5,expectedOutput_left_5);
 
-let actualOutput_left_7 = generateTriangle("left",7);
+let actualOutput_left_7 = generateTriangle({ type : "left",height : 7 });
 let expectedOutput_left_7 = "";
 expectedOutput_left_7 += "*\n"; 
 expectedOutput_left_7 += "**\n";
@@ -37,14 +37,14 @@ expectedOutput_left_7 += "******\n";
 expectedOutput_left_7 += "*******\n";
 checkAssert("generateTriangle",["left",7],actualOutput_left_7,expectedOutput_left_7);
 
-let actualOutput_right_3 = generateTriangle("right",3)
+let actualOutput_right_3 = generateTriangle({ type : "right",height : 3 })
 let expectedOutput_right_3 = "";
 expectedOutput_right_3 += "  *\n"; 
 expectedOutput_right_3 += " **\n";
 expectedOutput_right_3 += "***\n";
 checkAssert("generateTriangle",["right",3],actualOutput_right_3,expectedOutput_right_3);
 
-let actualOutput_right_5 = generateTriangle("right",5);
+let actualOutput_right_5 = generateTriangle({ type : "right",height : 5 });
 let expectedOutput_right_5 = "";
 expectedOutput_right_5 += "    *\n"; 
 expectedOutput_right_5 += "   **\n";
@@ -53,7 +53,7 @@ expectedOutput_right_5 += " ****\n";
 expectedOutput_right_5 += "*****\n";
 checkAssert("generateTriangle",["right",5],actualOutput_right_5,expectedOutput_right_5);
 
-let actualOutput_right_6 = generateTriangle("right",6);
+let actualOutput_right_6 = generateTriangle({ type : "right",height : 6 });
 let expectedOutput_right_6 = "";
 expectedOutput_right_6 +="     *\n"; 
 expectedOutput_right_6 +="    **\n";

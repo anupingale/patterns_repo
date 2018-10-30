@@ -28,11 +28,13 @@ const generateRight = function(height){
   return generateTriangle;
 }
 
-const generateTriangle = function(pattern,height){
-  if(pattern=="left"){
+const generateTriangle = function(patternSpecification){
+  let type = patternSpecification.type;
+  let height = patternSpecification.height;
+  if( type =="left"){
     return generateLeft(height);
   }
-  if(pattern=="right"){
+  if( type =="right"){
     return generateRight(height);
   }
 }
