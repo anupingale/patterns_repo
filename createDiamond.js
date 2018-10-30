@@ -1,9 +1,9 @@
 const generateDiamond = require("./src/patternLib.js").generateDiamond;
+const readUserInput = require("./src/patternUtil.js").readUserInput;
 
 const main = function(){
-  let pattern = process.argv[2];
-  let diamondHeight = +process.argv[3];
-  console.log(generateDiamond(pattern,diamondHeight));
+  let patternSpecification = readUserInput(process.argv);
+  console.log(generateDiamond(patternSpecification));
 }
 
 main();

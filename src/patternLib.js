@@ -141,7 +141,10 @@ const createAngledDiamond = function(height,upperTriangle,lowerTriangle){
   return upperTriangle+middleLine+"\n"+lowerTriangle;
 }
 
-const generateDiamond = function(pattern,height){
+const generateDiamond = function(patternSpecification){
+  let type = patternSpecification.type;
+  let height = patternSpecification.height;
+
   if(height %2 == 0){
     height = height-1;
   }
@@ -152,13 +155,13 @@ const generateDiamond = function(pattern,height){
   upperTriangle += "\n";
   lowerTriangle = upperTriangle;
 
-  if(pattern == "filled"){
+  if(type == "filled"){
     return createFilledDiamond(height,upperTriangle,lowerTriangle);
   }
-  if(pattern == "hollow"){
+  if(type == "hollow"){
     return createHollowDiamond(height,upperTriangle,lowerTriangle);
   }
-  if(pattern == "angled"){
+  if(type == "angled"){
     return createAngledDiamond(height,upperTriangle,lowerTriangle);
   }
 }
