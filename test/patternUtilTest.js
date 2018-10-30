@@ -1,7 +1,7 @@
 const assert = require("assert");
 const printLog = require("../testScript/logReporter.js").printLog;
 const patternUtil = require("../src/patternUtil.js");
-const {generateLines, readUserInput, generateSymbolPattern, starAtStartEnd, halfOfHeight, repeatCharacter} = patternUtil;
+const {leftJustify, generateLines, readUserInput, generateSymbolPattern, starAtStartEnd, halfOfHeight, repeatCharacter} = patternUtil;
 
 const checkAssert = function(funcName,args,actual,expected) {
   printLog(funcName,args,actual,expected);
@@ -90,3 +90,20 @@ checkAssert("readUserInput",["angled",40],readUserInput(["node","createTriangle"
 
 expected = {type : "angled", height : 40, width :40}
 checkAssert("readUserInput",["angled",40],readUserInput(["node","createTriangle","angled",40]),expected);
+
+/*--------------------------Test cases for leftJustify-----------------------------*/
+
+expected = " ";
+checkAssert("leftJustify",["",1],leftJustify("",1),expected);
+
+expected = "*";
+checkAssert("leftJustify",["*",1],leftJustify("*",1),expected);
+
+expected = "*  ";
+checkAssert("leftJustify",["*",3],leftJustify("*",3),expected);
+
+expected = "**  ";
+checkAssert("leftJustify",["**",4],leftJustify("**",4),expected);
+
+expected = "******";
+checkAssert("leftJustify",["******",6],leftJustify("******",6),expected);
