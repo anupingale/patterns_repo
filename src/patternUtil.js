@@ -2,8 +2,12 @@ const repeatCharacter = function(character,width){
   return new Array(width).fill(character).join("");
 }
 
-const leftJustify = function(message,length) {
-  let spaceCount = length - message.length;
+const rightJustify = function(message,width) {
+  return leftJustify(message,width).split("").reverse().join("");
+}
+
+const leftJustify = function(message,width) {
+  let spaceCount = width - message.length;
   let spacedLine = repeatCharacter(" ",spaceCount);
   return message+spacedLine;
 }
@@ -45,4 +49,4 @@ const readUserInput = function(args) {
   return { type : patternType, height : height, width : width}
 }
 
-module.exports = {leftJustify, readUserInput, generateSymbolPattern, generateLines, starAtStartEnd, halfOfHeight, repeatCharacter};
+module.exports = {rightJustify, leftJustify, readUserInput, generateSymbolPattern, generateLines, starAtStartEnd, halfOfHeight, repeatCharacter};

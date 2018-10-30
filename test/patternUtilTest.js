@@ -1,7 +1,14 @@
 const assert = require("assert");
 const printLog = require("../testScript/logReporter.js").printLog;
 const patternUtil = require("../src/patternUtil.js");
-const {leftJustify, generateLines, readUserInput, generateSymbolPattern, starAtStartEnd, halfOfHeight, repeatCharacter} = patternUtil;
+const { rightJustify,
+  leftJustify,
+  generateLines,
+  readUserInput,
+  generateSymbolPattern,
+  starAtStartEnd,
+  halfOfHeight,
+  repeatCharacter} = patternUtil;
 
 const checkAssert = function(funcName,args,actual,expected) {
   printLog(funcName,args,actual,expected);
@@ -107,3 +114,17 @@ checkAssert("leftJustify",["**",4],leftJustify("**",4),expected);
 
 expected = "******";
 checkAssert("leftJustify",["******",6],leftJustify("******",6),expected);
+
+/*--------------------------Test cases for rightJustify---------------------------*/
+
+expected = " "
+checkAssert("rightJustify",[" ",1],rightJustify(" ",1),expected);
+
+expected = "*"
+checkAssert("rightJustify",["*",1],rightJustify("*",1),expected);
+
+expected = " *"
+checkAssert("rightJustify",["*",2],rightJustify("*",2),expected);
+
+expected = "   ***"
+checkAssert("rightJustify",["***",6],rightJustify("***",6),expected);
