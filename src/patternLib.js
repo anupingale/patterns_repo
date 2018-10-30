@@ -4,9 +4,7 @@ const {readUserInput, generateSymbolPattern, generateLines, halfOfHeight, starAt
 const generateLeft = function(height){
   let generateTriangle="";
   for(let starIndex = 1; starIndex <= height; starIndex++){
-    for(let heightIndex = 1; heightIndex <= starIndex; heightIndex++){
-      generateTriangle += "*"; 
-    }
+    generateTriangle = generateTriangle + repeatCharacter("*",starIndex);
     generateTriangle +="\n";
   }
   return generateTriangle;
@@ -19,9 +17,7 @@ const generateRight = function(height){
     for(let noOfSpaces = spaceCount; noOfSpaces >= 1; noOfSpaces--){
       generateTriangle +=" ";
     }
-    for(let heightIndex = 1; heightIndex <= starIndex; heightIndex++){
-      generateTriangle+="*";
-    }
+    generateTriangle+= repeatCharacter("*",starIndex);
     generateTriangle+="\n";
     spaceCount--;
   }
@@ -35,7 +31,7 @@ const generateTriangle = function(patternSpecification){
 
   pattern["left"] = generateLeft;
   pattern["right"] = generateRight;
-  
+
   return pattern[type](height);
 }
 
