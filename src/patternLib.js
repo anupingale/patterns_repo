@@ -31,12 +31,12 @@ const generateRight = function(height){
 const generateTriangle = function(patternSpecification){
   let type = patternSpecification.type;
   let height = patternSpecification.height;
-  if( type =="left"){
-    return generateLeft(height);
-  }
-  if( type =="right"){
-    return generateRight(height);
-  }
+  let pattern = [];
+
+  pattern["left"] = generateLeft;
+  pattern["right"] = generateRight;
+  
+  return pattern[type](height);
 }
 
 const createFilledRect = function(height,width){
@@ -78,17 +78,13 @@ const createEmptyRect = function(height,width){
 const generateRectangle = function(patternSpecification) {
   let width = patternSpecification.width;
   let height = patternSpecification.height;
+  let type = patternSpecification.type;
+  let pattern = [];
 
-  if(patternSpecification.type =="filled"){
-    return createFilledRect(width,height);
-  }
-  if(patternSpecification.type =="empty"){
-    return createEmptyRect(width,height);
-  }
-  if(patternSpecification.type =="alternative"){
-    return createAlternateRect(width,height);
-  }
-
+  pattern["filled"] = createFilledRect;
+  pattern["empty"] = createEmptyRect;
+  pattern["alternative"] = createAlternateRect;
+  return pattern[type](width,height);
 }
 
 const createFilledDiamond = function(height,upperTriangle,lowerTriangle){
@@ -144,6 +140,7 @@ const createAngledDiamond = function(height,upperTriangle,lowerTriangle){
 const generateDiamond = function(patternSpecification){
   let type = patternSpecification.type;
   let height = patternSpecification.height;
+  let pattern = [];
 
   if(height %2 == 0){
     height = height-1;
@@ -155,15 +152,10 @@ const generateDiamond = function(patternSpecification){
   upperTriangle += "\n";
   lowerTriangle = upperTriangle;
 
-  if(type == "filled"){
-    return createFilledDiamond(height,upperTriangle,lowerTriangle);
-  }
-  if(type == "hollow"){
-    return createHollowDiamond(height,upperTriangle,lowerTriangle);
-  }
-  if(type == "angled"){
-    return createAngledDiamond(height,upperTriangle,lowerTriangle);
-  }
+  pattern["filled"] = createFilledDiamond;
+  pattern["hollow"] = createHollowDiamond;
+  pattern["angled"] =  createAngledDiamond;
+  return pattern[type](height,upperTriangle,lowerTriangle);
 }
 
 module.exports = {generateLeft,
