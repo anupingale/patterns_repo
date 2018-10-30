@@ -29,5 +29,14 @@ const generateSymbolPattern = function(symbol,length){
   return symbolRow;
 }
 
+const readUserInput = function(args) {
+  let patternType = args[2];
+  let height = +args[3];
+  let width = +args[4];
+  if(isNaN(width)) {
+    width = height;
+  }
+  return { type : patternType, height : height, width : width}
+}
 
-module.exports = { generateSymbolPattern, generateLines, starAtStartEnd, halfOfHeight, repeatCharacter};
+module.exports = {readUserInput, generateSymbolPattern, generateLines, starAtStartEnd, halfOfHeight, repeatCharacter};

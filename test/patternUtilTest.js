@@ -1,7 +1,7 @@
 const assert = require("assert");
 const printLog = require("../testScript/logReporter.js").printLog;
 const patternUtil = require("../src/patternUtil.js");
-const {generateLines, generateSymbolPattern, starAtStartEnd, halfOfHeight, repeatCharacter} = patternUtil;
+const {generateLines, readUserInput, generateSymbolPattern, starAtStartEnd, halfOfHeight, repeatCharacter} = patternUtil;
 
 const checkAssert = function(funcName,args,actual,expected) {
   printLog(funcName,args,actual,expected);
@@ -68,3 +68,25 @@ checkAssert("generateSymbol",["*",5],generateSymbolPattern("*",4),expected);
 expected = "----------"
 checkAssert("generateSymbol",["-",10],generateSymbolPattern("-",10),expected);
 
+/*---------------------------Test cases for readUserInput-------------------------*/
+
+expected = {type : "filled", height : 10, width : 7}
+checkAssert("readUserInput",["filled",10,7],readUserInput(["node","createTriangle","filled",10,7]),expected);
+
+expected = {type : "filled", height : 5, width : 5}
+checkAssert("readUserInput",["filled",5,5],readUserInput(["node","createTriangle","filled",5,5]),expected);
+
+expected = {type : "hollow", height : 40, width : 7}
+checkAssert("readUserInput",["hollow",40,7],readUserInput(["node","createTriangle","hollow",40,7]),expected);
+
+expected = {type : "hollow", height : 10, width : 7}
+checkAssert("readUserInput",["hollow",10,7],readUserInput(["node","createTriangle","hollow",10,7]),expected);
+
+expected = {type : "hollow", height : 4, width : 7}
+checkAssert("readUserInput",["hollow",4,7],readUserInput(["node","createTriangle","hollow",4,7]),expected);
+
+expected = {type : "angled", height : 40, width : 40}
+checkAssert("readUserInput",["angled",40],readUserInput(["node","createTriangle","angled",40]),expected);
+
+expected = {type : "angled", height : 40, width :40}
+checkAssert("readUserInput",["angled",40],readUserInput(["node","createTriangle","angled",40]),expected);
