@@ -1,16 +1,22 @@
 const patternUtil = require('./patternUtil.js');
-const {readUserInput, generateSymbolPattern, generateLines, halfOfHeight, starAtStartEnd, repeatCharacter} = patternUtil;
+const {readUserInput,
+  leftJustify,
+  generateSymbolPattern,
+  generateLines,
+  halfOfHeight,
+  starAtStartEnd,
+  repeatCharacter} = patternUtil;
 
-const generateLeft = function(height){
-  let generateTriangle="";
+const generateLeftTriangle = function(height){
+  let generateTriangle = [];
   for(let starIndex = 1; starIndex <= height; starIndex++){
-    generateTriangle = generateTriangle + repeatCharacter("*",starIndex);
-    generateTriangle +="\n";
+    let line = repeatCharacter("*",starIndex);
+    generateTriangle.push(leftJustify(line,height));
   }
-  return generateTriangle;
+  return generateTriangle.join("\n");
 }
 
-const generateRight = function(height){
+const generateRightTriangle = function(height){
   let generateTriangle="";
   let spaceCount=height-1;
   for(let starIndex = 1; starIndex <= height; starIndex++){
@@ -29,8 +35,8 @@ const generateTriangle = function(patternSpecification){
   let height = patternSpecification.height;
   let pattern = [];
 
-  pattern["left"] = generateLeft;
-  pattern["right"] = generateRight;
+  pattern["left"] = generateLeftTriangle;
+  pattern["right"] = generateRightTriangle;
 
   return pattern[type](height);
 }
@@ -154,7 +160,7 @@ const generateDiamond = function(patternSpecification){
   return pattern[type](height,upperTriangle,lowerTriangle);
 }
 
-module.exports = {generateLeft,
+module.exports = {generateLeftTriangle,
   generateTriangle,
   generateRectangle,
   generateDiamond}
