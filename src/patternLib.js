@@ -38,24 +38,39 @@ const generateTriangle = function(patternSpecification){
 }
 
 const createFilledRect = function(height,width){
-  let line = repeatCharacter("*",width) + "\n";
-  return repeatCharacter(line,height);
+  let delimiter = "\n";
+  let requiredRectangle = "";
+  for(let lineIndex=0; lineIndex<height; lineIndex++){
+    requiredRectangle += repeatCharacter("*",width) + delimiter;
+  }
+  return requiredRectangle;
 }
 
 const createAlternateRect= function(height,width){
-  let symbol = ["*","-"];
-  let alternateRect = [];
-  for(let index = 0; index < height; index++) {
-    let filter = symbol[index % 2];
-    alternateRect.push(repeatCharacter(filter,width));
+  let requiredRectangle = "";
+  let delimiter = "";
+  for(let lineIndex2=height; lineIndex2>0; lineIndex2--){
+    requiredRectangle += delimiter;
+    delimiter = "\n";
+    requiredRectangle += repeatCharacter("*",width);
+    lineIndex2=lineIndex2-1;
+    if(lineIndex2>0){
+      requiredRectangle += delimiter
+      requiredRectangle += repeatCharacter("-",width);
+    }
   }
-  return alternateRect.join("\n");
+  return requiredRectangle;
 }
 
 const createEmptyRect = function(height,width){
-  let starLine = repeatCharacter("*",width) + "\n";
-  let hollowLine = starAtStartEnd(width) + "\n";
-  return starLine + repeatCharacter(hollowLine,height-2) + starLine;
+  let requiredRectangle = "";
+  let delimiter = "\n";
+  requiredRectangle = repeatCharacter("*",width) + delimiter;
+  for(let lineIndex3 = 2; lineIndex3 < height; lineIndex3++ ){
+    requiredRectangle += starAtStartEnd(width) + delimiter;
+  }
+  requiredRectangle += repeatCharacter("*",width);
+  return requiredRectangle;
 }
 
 const generateRectangle = function(patternSpecification) {
