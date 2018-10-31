@@ -2,6 +2,7 @@ const patternUtil = require('./patternUtil.js');
 const {readUserInput,
   leftJustify,
   rightJustify,
+  centerJustify,
   generateSymbolPattern,
   generateLines,
   halfOfHeight,
@@ -121,18 +122,12 @@ const createAngledDiamond = function(height,upperTriangle,lowerTriangle){
 
 const generateDiamond = function(patternSpecification){
   let type = patternSpecification.type;
-  let height = patternSpecification.height;
+  let checkHeight  = [patternSpecification.height-1,patternSpecification.height];
+  let height = checkHeight[patternSpecification.height % 2];
   let pattern = [];
 
-  if(height %2 == 0){
-    height = height-1;
-  }
-  let upperTriangle ="";
-  let lowerTriangle ="";
-  upperTriangle += generateSymbolPattern(" ",(height/2));
-  upperTriangle += generateSymbolPattern("*",1);
-  upperTriangle += "\n";
-  lowerTriangle = upperTriangle;
+  let upperTriangle = centerJustify("*",height) + "\n"; 
+  let lowerTriangle = upperTriangle;
 
   pattern["filled"] = createFilledDiamond;
   pattern["hollow"] = createHollowDiamond;
