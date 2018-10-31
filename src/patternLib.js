@@ -33,7 +33,6 @@ const generateTriangle = function(patternSpecification){
 
   pattern["left"] = generateLeftTriangle;
   pattern["right"] = generateRightTriangle;
-
   return pattern[type](height);
 }
 
