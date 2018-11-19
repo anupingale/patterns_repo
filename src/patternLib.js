@@ -82,31 +82,31 @@ const generateRectangle = function(patternSpecification) {
   return pattern[type](width,height).join("\n");
 }
 
-const createFilledDiamond = function(height,upperPeak,lowerPeak){
+const createFilledDiamond = function(height,peak){
   let seriesOfLines = createDiamondSeries(height);
-  let diamond =[upperPeak];
+  let diamond =[peak];
   let series = seriesOfLines.map(filledLine);
   for (let index=0 ; index < seriesOfLines.length;index++){
     diamond.push(centerJustify(series[index],height));
   }
-  diamond.push(lowerPeak);
+  diamond.push(peak);
   return diamond.join("\n");
 }
 
-const createHollowDiamond = function(height,upperPeak,lowerPeak){
+const createHollowDiamond = function(height,peak){
   let seriesOfLines = createDiamondSeries(height);
-  let diamond = [upperPeak];
+  let diamond = [peak];
   let series = seriesOfLines.map(hollowLine);
   for (let index=0 ; index < seriesOfLines.length;index++){
     diamond.push(centerJustify(series[index],height));
   }
-  diamond.push(lowerPeak);
+  diamond.push(peak);
   return diamond.join("\n");
 }
 
-const createAngledDiamond = function(height,upperPeak,lowerPeak){
+const createAngledDiamond = function(height,peak){
   let seriesOfLines = createDiamondSeries(height);
-  let angledDiamond = [upperPeak];
+  let angledDiamond = [peak];
   let halfWidth = (seriesOfLines.length/2);
   let upperHalf = seriesOfLines.slice(0,halfWidth);
   let upperPart = upperHalf.map(upperAngledLine);
@@ -118,7 +118,7 @@ const createAngledDiamond = function(height,upperPeak,lowerPeak){
   for (let index=0;index<diamond.length;index++){
     angledDiamond.push(centerJustify(diamond[index],height));
   }
-  angledDiamond.push(lowerPeak);
+  angledDiamond.push(peak);
   return angledDiamond.join("\n");
 }
 
@@ -127,14 +127,12 @@ const generateDiamond = function(patternSpecification){
   let checkHeight  = [patternSpecification.height-1,patternSpecification.height];
   let height = checkHeight[patternSpecification.height % 2];
   let pattern = [];
-
-  let upperPeak = centerJustify("*",height); 
-  let lowerPeak = upperPeak;
+  let peak = centerJustify("*",height);
 
   pattern["filled"] = createFilledDiamond;
   pattern["hollow"] = createHollowDiamond;
   pattern["angled"] =  createAngledDiamond;
-  return pattern[type](height,upperPeak,lowerPeak);
+  return pattern[type](height,peak);
 }
 
 module.exports = {
