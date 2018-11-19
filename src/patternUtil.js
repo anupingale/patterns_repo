@@ -6,6 +6,17 @@ const rightJustify = function(message,width) {
   return leftJustify(message,width).split("").reverse().join("");
 }
 
+const createDiamondSeries = function(height){
+  let series = [];
+  for (let count = 3 ; count <= height ; count+= 2){
+    series.push(count);
+  }
+  let duplicateSeries = series.slice(0);
+  duplicateSeries.pop();
+  let reversed = duplicateSeries.reverse();
+  return series.concat(reversed);
+}
+
 const leftJustify = function(message,width) {
   let spaceCount = width - message.length;
   let spacedLine = repeatCharacter(" ",spaceCount).join("");
@@ -55,4 +66,4 @@ const readUserInput = function(args) {
   return { type : patternType, height : height, width : width}
 }
 
-module.exports = {centerJustify, rightJustify, leftJustify, readUserInput, generateSymbolPattern, generateLines, starAtStartEnd, halfOfHeight, repeatCharacter};
+module.exports = {createDiamondSeries, centerJustify, rightJustify, leftJustify, readUserInput, generateSymbolPattern, generateLines, starAtStartEnd, halfOfHeight, repeatCharacter};

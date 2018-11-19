@@ -9,12 +9,21 @@ const { rightJustify,
   generateSymbolPattern,
   starAtStartEnd,
   halfOfHeight,
-  repeatCharacter} = patternUtil;
+  repeatCharacter,
+  createDiamondSeries} = patternUtil;
 
 const checkAssert = function(funcName,args,actual,expected) {
   printLog(funcName,args,actual,expected);
   assert.deepStrictEqual(actual,expected);
 }
+
+//----------Tets cases for create Diamond series function----------//
+
+checkAssert("diamondSeries",[0],createDiamondSeries(0),[]);
+checkAssert("diamondSeries",[1],createDiamondSeries(1),[]);
+checkAssert("diamondSeries",[2],createDiamondSeries(2),[]);
+checkAssert("diamondSeries",[3],createDiamondSeries(3),[3]);
+checkAssert("diamondSeries",[5],createDiamondSeries(5),[3,5,3]);
 
 /*---------------------------Test cases for repeatCharacter--------------------------*/
 let expected = ['*'];
