@@ -6,7 +6,6 @@ const {readUserInput,
   centerJustify,
   generateSymbolPattern,
   generateLines,
-  halfOfHeight,
   starAtStartEnd,
   repeatCharacter} = patternUtil;
 

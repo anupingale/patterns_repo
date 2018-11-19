@@ -39,10 +39,6 @@ const generateLines = function(firstSymbol,middleSymbol,lastSymbol){
   }
 }
 
-const halfOfHeight = function(height) {
-  return Math.floor(height/2);
-}
-
 const starAtStartEnd = function(widthForStar){
   let line = "*";
   line = line + repeatCharacter(" ",widthForStar-2).join("");
@@ -68,4 +64,4 @@ const readUserInput = function(args) {
   return { type : patternType, height : height, width : width}
 }
 
-module.exports = {createDiamondSeries, centerJustify, rightJustify, leftJustify, readUserInput, generateSymbolPattern, generateLines, starAtStartEnd, halfOfHeight, repeatCharacter};
+module.exports = {createDiamondSeries, centerJustify, rightJustify, leftJustify, readUserInput, generateSymbolPattern, generateLines, starAtStartEnd, repeatCharacter};

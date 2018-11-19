@@ -49,15 +49,6 @@ checkAssert("starAtStartEnd",["3"],starAtStartEnd(3),expected);
 expected = "*   *";
 checkAssert("starAtStartEnd",["5"],starAtStartEnd(5),expected);
 
-
-/*--------------------------Test cases for halfOfHeight------------------------------*/
-expected = 2;
-checkAssert("halfOfHeight",["5"],halfOfHeight(5),expected);
-
-expected = 5;
-checkAssert("halfOfHeight",["10"],halfOfHeight(10),expected);
-
-
 /*-------------------------Test cases for generateLines----------------------------*/
 expected = "***";
 let line = generateLines("*","*","*");
