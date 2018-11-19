@@ -60,19 +60,24 @@ checkAssert("halfOfHeight",["10"],halfOfHeight(10),expected);
 
 /*-------------------------Test cases for generateLines----------------------------*/
 expected = "***";
-checkAssert("generateLines",["*","*","*",3],generateLines("*","*","*",3),expected);
+let line = generateLines("*","*","*");
+checkAssert("generateLines",["*","*","*",3],line(3),expected);
 
 expected = "* *";
-checkAssert("generateLines",["*"," ","*",3],generateLines("*"," ","*",3),expected);
+line = generateLines("*"," ","*");
+checkAssert("generateLines",["*"," ","*",3],line(3),expected);
 
 expected = "-*****-";
-checkAssert("generateLines",["-","*","-",7],generateLines("-","*","-",7),expected);
+line = generateLines("-","*","-");
+checkAssert("generateLines",["-","*","-",7],line(7),expected);
 
 expected = " ********* ";
-checkAssert("generateLines",[" ","*"," ",11],generateLines(" ","*"," ",11),expected);
+line = generateLines(" ","*"," ");
+checkAssert("generateLines",[" ","*"," ",11],line(11),expected);
 
 expected = "*---------------@";
-checkAssert("generateLines",["*","-","@",17],generateLines("*","-","@",17),expected);
+line = generateLines("*","-","@");
+checkAssert("generateLines",["*","-","@",17],line(17),expected);
 
 /*--------------------------Test cases for generatesymbolPattern--------------------*/
 

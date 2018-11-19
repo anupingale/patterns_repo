@@ -9,6 +9,12 @@ const {readUserInput,
   starAtStartEnd,
   repeatCharacter} = patternUtil;
 
+const filledLine = generateLines("*","*","*");
+const dashLine = generateLines("-","-","-");
+const hollowLine = generateLines("*"," ","*");
+const upperAngledLine = generateLines("/"," ","\\");
+const lowerAngledLine = generateLines("\\"," ","/");
+
 const generateLeftTriangle = function(height){
   let generateTriangle = [];
   for(let starIndex = 1; starIndex <= height; starIndex++){
@@ -85,7 +91,7 @@ const createFilledDiamond = function(height,upperPeak,lowerPeak){
     upperPeak += createLine;
     lowerPeak = createLine+lowerPeak;
   }
-  let middleLine = generateLines("*","*","*",(height));
+  let middleLine = filledLine(height);
   return upperPeak+middleLine+"\n"+lowerPeak;
 }
 
@@ -94,12 +100,12 @@ const createHollowDiamond = function(height,upperPeak,lowerPeak){
   for(let lineNumber = 1; lineNumber <= limit-1; lineNumber++) {
     let createLine = "";
     createLine += generateSymbolPattern(" ",limit-lineNumber);
-    createLine += generateLines("*"," ","*",2*lineNumber+1);
+    createLine += hollowLine(2*lineNumber+1);
     createLine +="\n";
     upperPeak += createLine;
     lowerPeak = createLine+lowerPeak;
   }
-  let middleLine = generateLines("*"," ","*",(height));
+  let middleLine = hollowLine(height);
   return upperPeak+middleLine+"\n"+lowerPeak;
 }
 
@@ -109,19 +115,19 @@ const createAngledDiamond = function(height,upperPeak,lowerPeak){
   for(let lineNumber = 1; lineNumber <= limit-1; lineNumber++) {
     let createLine = "";
     createLine += generateSymbolPattern(" ",limit-lineNumber);
-    createLine += generateLines("/"," ","\\",2*lineNumber+1);
+    createLine += upperAngledLine(2*lineNumber+1);
     createLine +="\n";
     upperPeak +=createLine;
   }
   for(let lineNumber = limit-1; lineNumber >= 1; lineNumber--){
     let createLine ="";
     createLine += generateSymbolPattern(" ",lineNumber);
-    createLine += generateLines("\\"," ","/",spaces);
+    createLine += lowerAngledLine(spaces);
     createLine +="\n";
     lowerPeak = createLine + lowerPeak;
     spaces+=2;
   }
-  let middleLine = generateLines("*"," ","*",(height));
+  let middleLine = hollowLine(height);
   return upperPeak+middleLine+"\n"+lowerPeak;
 }
 

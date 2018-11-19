@@ -29,12 +29,14 @@ const centerJustify = function(message,width) {
   return spacedLine+message+spacedLine;
 }
 
-const generateLines = function(firstSymbol,middleSymbol,lastSymbol,length){
-  let line ="";
-  line += firstSymbol;
-  line += repeatCharacter(middleSymbol,length-2).join("");
-  line += lastSymbol;
-  return line;
+const generateLines = function(firstSymbol,middleSymbol,lastSymbol){
+  return function(length) {
+    let line ="";
+    line += firstSymbol;
+    line += repeatCharacter(middleSymbol,length-2).join("");
+    line += lastSymbol;
+    return line;
+  }
 }
 
 const halfOfHeight = function(height) {
