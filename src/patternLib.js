@@ -38,8 +38,8 @@ const generateTriangle = function(patternSpecification){
 }
 
 const createFilledRect = function(height,width){
-  let line = repeatCharacter("*",width).join("") + "\n";
-  return repeatCharacter(line,height).join("");
+  let line = repeatCharacter("*",width).join("");
+  return repeatCharacter(line,height);
 }
 
 const createAlternateRect= function(height,width){
@@ -49,13 +49,18 @@ const createAlternateRect= function(height,width){
     let filter = symbol[index % 2];
     alternateRect.push(repeatCharacter(filter,width).join(""));
   }
-  return alternateRect.join("\n");
+  return alternateRect;
 }
 
 const createEmptyRect = function(height,width){
-  let starLine = repeatCharacter("*",width).join("") + "\n";
-  let hollowLine = starAtStartEnd(width) + "\n";
-  return starLine + repeatCharacter(hollowLine,height-2).join("") + starLine;
+  let starLine = repeatCharacter("*",width).join("");
+  let hollowLine = starAtStartEnd(width);
+  let emptyRect = [starLine];
+  for(let index = 1; index < height-1; index++) {
+    emptyRect.push(hollowLine);
+  }
+  emptyRect.push(starLine);
+  return emptyRect;
 }
 
 const generateRectangle = function(patternSpecification) {
@@ -67,7 +72,7 @@ const generateRectangle = function(patternSpecification) {
   pattern["filled"] = createFilledRect;
   pattern["empty"] = createEmptyRect;
   pattern["alternative"] = createAlternateRect;
-  return pattern[type](width,height);
+  return pattern[type](width,height).join("\n");
 }
 
 const createFilledDiamond = function(height,upperTriangle,lowerTriangle){
