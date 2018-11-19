@@ -90,7 +90,7 @@ const createFilledDiamond = function(height,peak){
     diamond.push(centerJustify(series[index],height));
   }
   diamond.push(peak);
-  return diamond.join("\n");
+  return diamond;
 }
 
 const createHollowDiamond = function(height,peak){
@@ -101,7 +101,7 @@ const createHollowDiamond = function(height,peak){
     diamond.push(centerJustify(series[index],height));
   }
   diamond.push(peak);
-  return diamond.join("\n");
+  return diamond;
 }
 
 const createAngledDiamond = function(height,peak){
@@ -119,7 +119,7 @@ const createAngledDiamond = function(height,peak){
     angledDiamond.push(centerJustify(diamond[index],height));
   }
   angledDiamond.push(peak);
-  return angledDiamond.join("\n");
+  return angledDiamond;
 }
 
 const generateDiamond = function(patternSpecification){
@@ -132,7 +132,7 @@ const generateDiamond = function(patternSpecification){
   pattern["filled"] = createFilledDiamond;
   pattern["hollow"] = createHollowDiamond;
   pattern["angled"] =  createAngledDiamond;
-  return pattern[type](height,peak);
+  return pattern[type](height,peak).join("\n");
 }
 
 module.exports = {
