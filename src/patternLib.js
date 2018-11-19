@@ -75,35 +75,35 @@ const generateRectangle = function(patternSpecification) {
   return pattern[type](width,height).join("\n");
 }
 
-const createFilledDiamond = function(height,upperTriangle,lowerTriangle){
+const createFilledDiamond = function(height,upperPeak,lowerPeak){
   let limit = halfOfHeight(height);
   for(let lineNumber = 1; lineNumber <= limit-1; lineNumber++) {
     let createLine = "";
     createLine += generateSymbolPattern(" ",limit-lineNumber);
     createLine += generateSymbolPattern("*",2*lineNumber+1);
     createLine +="\n";
-    upperTriangle += createLine;
-    lowerTriangle = createLine+lowerTriangle;
+    upperPeak += createLine;
+    lowerPeak = createLine+lowerPeak;
   }
   let middleLine = generateLines("*","*","*",(height));
-  return upperTriangle+middleLine+"\n"+lowerTriangle;
+  return upperPeak+middleLine+"\n"+lowerPeak;
 }
 
-const createHollowDiamond = function(height,upperTriangle,lowerTriangle){
+const createHollowDiamond = function(height,upperPeak,lowerPeak){
   let limit = halfOfHeight(height);
   for(let lineNumber = 1; lineNumber <= limit-1; lineNumber++) {
     let createLine = "";
     createLine += generateSymbolPattern(" ",limit-lineNumber);
     createLine += generateLines("*"," ","*",2*lineNumber+1);
     createLine +="\n";
-    upperTriangle += createLine;
-    lowerTriangle = createLine+lowerTriangle;
+    upperPeak += createLine;
+    lowerPeak = createLine+lowerPeak;
   }
   let middleLine = generateLines("*"," ","*",(height));
-  return upperTriangle+middleLine+"\n"+lowerTriangle;
+  return upperPeak+middleLine+"\n"+lowerPeak;
 }
 
-const createAngledDiamond = function(height,upperTriangle,lowerTriangle){
+const createAngledDiamond = function(height,upperPeak,lowerPeak){
   let limit = halfOfHeight(height);
   let spaces=3;
   for(let lineNumber = 1; lineNumber <= limit-1; lineNumber++) {
@@ -111,18 +111,18 @@ const createAngledDiamond = function(height,upperTriangle,lowerTriangle){
     createLine += generateSymbolPattern(" ",limit-lineNumber);
     createLine += generateLines("/"," ","\\",2*lineNumber+1);
     createLine +="\n";
-    upperTriangle +=createLine;
+    upperPeak +=createLine;
   }
   for(let lineNumber = limit-1; lineNumber >= 1; lineNumber--){
     let createLine ="";
     createLine += generateSymbolPattern(" ",lineNumber);
     createLine += generateLines("\\"," ","/",spaces);
     createLine +="\n";
-    lowerTriangle = createLine + lowerTriangle;
+    lowerPeak = createLine + lowerPeak;
     spaces+=2;
   }
   let middleLine = generateLines("*"," ","*",(height));
-  return upperTriangle+middleLine+"\n"+lowerTriangle;
+  return upperPeak+middleLine+"\n"+lowerPeak;
 }
 
 const generateDiamond = function(patternSpecification){
@@ -131,13 +131,13 @@ const generateDiamond = function(patternSpecification){
   let height = checkHeight[patternSpecification.height % 2];
   let pattern = [];
 
-  let upperTriangle = centerJustify("*",height) + "\n"; 
-  let lowerTriangle = upperTriangle;
+  let upperPeak = centerJustify("*",height) + "\n"; 
+  let lowerPeak = upperPeak;
 
   pattern["filled"] = createFilledDiamond;
   pattern["hollow"] = createHollowDiamond;
   pattern["angled"] =  createAngledDiamond;
-  return pattern[type](height,upperTriangle,lowerTriangle);
+  return pattern[type](height,upperPeak,lowerPeak);
 }
 
 module.exports = {
