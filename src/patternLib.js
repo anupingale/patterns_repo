@@ -12,7 +12,7 @@ const {readUserInput,
 const generateLeftTriangle = function(height){
   let generateTriangle = [];
   for(let starIndex = 1; starIndex <= height; starIndex++){
-    let line = repeatCharacter("*",starIndex);
+    let line = repeatCharacter("*",starIndex).join("");
     generateTriangle.push(leftJustify(line,height));
   }
   return generateTriangle.join("\n");
@@ -21,7 +21,7 @@ const generateLeftTriangle = function(height){
 const generateRightTriangle = function(height){
   let generateTriangle = [];
   for(let starIndex = 1; starIndex <= height; starIndex++){
-    let line = repeatCharacter("*",starIndex);
+    let line = repeatCharacter("*",starIndex).join("");
     generateTriangle.push(rightJustify(line,height));
   }
   return generateTriangle.join("\n");
@@ -38,8 +38,8 @@ const generateTriangle = function(patternSpecification){
 }
 
 const createFilledRect = function(height,width){
-  let line = repeatCharacter("*",width) + "\n";
-  return repeatCharacter(line,height);
+  let line = repeatCharacter("*",width).join("") + "\n";
+  return repeatCharacter(line,height).join("");
 }
 
 const createAlternateRect= function(height,width){
@@ -47,15 +47,15 @@ const createAlternateRect= function(height,width){
   let alternateRect = [];
   for(let index = 0; index < height; index++) {
     let filter = symbol[index % 2];
-    alternateRect.push(repeatCharacter(filter,width));
+    alternateRect.push(repeatCharacter(filter,width).join(""));
   }
   return alternateRect.join("\n");
 }
 
 const createEmptyRect = function(height,width){
-  let starLine = repeatCharacter("*",width) + "\n";
+  let starLine = repeatCharacter("*",width).join("") + "\n";
   let hollowLine = starAtStartEnd(width) + "\n";
-  return starLine + repeatCharacter(hollowLine,height-2) + starLine;
+  return starLine + repeatCharacter(hollowLine,height-2).join("") + starLine;
 }
 
 const generateRectangle = function(patternSpecification) {

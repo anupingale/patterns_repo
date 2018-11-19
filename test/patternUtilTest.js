@@ -17,16 +17,16 @@ const checkAssert = function(funcName,args,actual,expected) {
 }
 
 /*---------------------------Test cases for repeatCharacter--------------------------*/
-let expected = "*";
+let expected = ['*'];
 checkAssert("repeatCharacter",["*",1],repeatCharacter("*",1),expected);
 
-expected = "*****";
+expected = ['*','*','*','*','*'];
 checkAssert("repeatCharacter",["*",5],repeatCharacter("*",5),expected);
  
-expected = "----";
+expected = ['-','-','-','-'];
 checkAssert("repeatCharacter",["-",4],repeatCharacter("-",4),expected);
 
-expected = "@@@@@@";
+expected = ['@','@','@','@','@','@'];
 checkAssert("repeatCharacter",["@",6],repeatCharacter("@",6),expected);
 
 

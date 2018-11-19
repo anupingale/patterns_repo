@@ -1,5 +1,5 @@
 const repeatCharacter = function(character,width){
-  return new Array(width).fill(character).join("");
+  return new Array(width).fill(character);
 }
 
 const rightJustify = function(message,width) {
@@ -8,7 +8,7 @@ const rightJustify = function(message,width) {
 
 const leftJustify = function(message,width) {
   let spaceCount = width - message.length;
-  let spacedLine = repeatCharacter(" ",spaceCount);
+  let spacedLine = repeatCharacter(" ",spaceCount).join("");
   return message+spacedLine;
 }
 
@@ -21,7 +21,7 @@ const centerJustify = function(message,width) {
 const generateLines = function(firstSymbol,middleSymbol,lastSymbol,length){
   let line ="";
   line += firstSymbol;
-  line += repeatCharacter(middleSymbol,length-2);
+  line += repeatCharacter(middleSymbol,length-2).join("");
   line += lastSymbol;
   return line;
 }
@@ -32,7 +32,7 @@ const halfOfHeight = function(height) {
 
 const starAtStartEnd = function(widthForStar){
   let line = "*";
-  line = line + repeatCharacter(" ",widthForStar-2);
+  line = line + repeatCharacter(" ",widthForStar-2).join("");
   line = line + "*";
   return line;
 }
