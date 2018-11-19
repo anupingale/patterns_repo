@@ -15,7 +15,7 @@ const generateLeftTriangle = function(height){
     let line = repeatCharacter("*",starIndex).join("");
     generateTriangle.push(leftJustify(line,height));
   }
-  return generateTriangle.join("\n");
+  return generateTriangle;
 }
 
 const generateRightTriangle = function(height){
@@ -24,7 +24,7 @@ const generateRightTriangle = function(height){
     let line = repeatCharacter("*",starIndex).join("");
     generateTriangle.push(rightJustify(line,height));
   }
-  return generateTriangle.join("\n");
+  return generateTriangle;
 }
 
 const generateTriangle = function(patternSpecification){
@@ -34,7 +34,7 @@ const generateTriangle = function(patternSpecification){
 
   pattern["left"] = generateLeftTriangle;
   pattern["right"] = generateRightTriangle;
-  return pattern[type](height);
+  return pattern[type](height).join("\n");
 }
 
 const createFilledRect = function(height,width){
