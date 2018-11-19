@@ -1,6 +1,7 @@
 const patternUtil = require('./patternUtil.js');
 const {readUserInput,
   leftJustify,
+  createDiamondSeries,
   rightJustify,
   centerJustify,
   generateSymbolPattern,
@@ -82,53 +83,43 @@ const generateRectangle = function(patternSpecification) {
 }
 
 const createFilledDiamond = function(height,upperPeak,lowerPeak){
-  let limit = halfOfHeight(height);
-  for(let lineNumber = 1; lineNumber <= limit-1; lineNumber++) {
-    let createLine = "";
-    createLine += generateSymbolPattern(" ",limit-lineNumber);
-    createLine += generateSymbolPattern("*",2*lineNumber+1);
-    createLine +="\n";
-    upperPeak += createLine;
-    lowerPeak = createLine+lowerPeak;
+  let seriesOfLines = createDiamondSeries(height);
+  let diamond =[upperPeak];
+  let series = seriesOfLines.map(filledLine);
+  for (let index=0 ; index < seriesOfLines.length;index++){
+    diamond.push(centerJustify(series[index],height));
   }
-  let middleLine = filledLine(height);
-  return upperPeak+middleLine+"\n"+lowerPeak;
+  diamond.push(lowerPeak);
+  return diamond.join("\n");
 }
 
 const createHollowDiamond = function(height,upperPeak,lowerPeak){
-  let limit = halfOfHeight(height);
-  for(let lineNumber = 1; lineNumber <= limit-1; lineNumber++) {
-    let createLine = "";
-    createLine += generateSymbolPattern(" ",limit-lineNumber);
-    createLine += hollowLine(2*lineNumber+1);
-    createLine +="\n";
-    upperPeak += createLine;
-    lowerPeak = createLine+lowerPeak;
+  let seriesOfLines = createDiamondSeries(height);
+  let diamond = [upperPeak];
+  let series = seriesOfLines.map(hollowLine);
+  for (let index=0 ; index < seriesOfLines.length;index++){
+    diamond.push(centerJustify(series[index],height));
   }
-  let middleLine = hollowLine(height);
-  return upperPeak+middleLine+"\n"+lowerPeak;
+  diamond.push(lowerPeak);
+  return diamond.join("\n");
 }
 
 const createAngledDiamond = function(height,upperPeak,lowerPeak){
-  let limit = halfOfHeight(height);
-  let spaces=3;
-  for(let lineNumber = 1; lineNumber <= limit-1; lineNumber++) {
-    let createLine = "";
-    createLine += generateSymbolPattern(" ",limit-lineNumber);
-    createLine += upperAngledLine(2*lineNumber+1);
-    createLine +="\n";
-    upperPeak +=createLine;
+  let seriesOfLines = createDiamondSeries(height);
+  let angledDiamond = [upperPeak];
+  let halfWidth = (seriesOfLines.length/2);
+  let upperHalf = seriesOfLines.slice(0,halfWidth);
+  let upperPart = upperHalf.map(upperAngledLine);
+  let lower = upperPart.slice();
+  let lowerHalf = lower.reverse();
+  let lowerPart = lowerHalf.map(element => element.split("").reverse().join(""));
+  upperPart.push(hollowLine(height));
+  let diamond = upperPart.concat(lowerPart);
+  for (let index=0;index<diamond.length;index++){
+    angledDiamond.push(centerJustify(diamond[index],height));
   }
-  for(let lineNumber = limit-1; lineNumber >= 1; lineNumber--){
-    let createLine ="";
-    createLine += generateSymbolPattern(" ",lineNumber);
-    createLine += lowerAngledLine(spaces);
-    createLine +="\n";
-    lowerPeak = createLine + lowerPeak;
-    spaces+=2;
-  }
-  let middleLine = hollowLine(height);
-  return upperPeak+middleLine+"\n"+lowerPeak;
+  angledDiamond.push(lowerPeak);
+  return angledDiamond.join("\n");
 }
 
 const generateDiamond = function(patternSpecification){
@@ -137,7 +128,7 @@ const generateDiamond = function(patternSpecification){
   let height = checkHeight[patternSpecification.height % 2];
   let pattern = [];
 
-  let upperPeak = centerJustify("*",height) + "\n"; 
+  let upperPeak = centerJustify("*",height); 
   let lowerPeak = upperPeak;
 
   pattern["filled"] = createFilledDiamond;

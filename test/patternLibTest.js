@@ -149,59 +149,59 @@ checkAssert("generateRectangle",["alternative,10,4"],actualOutput_alternate_10_4
 let actualOutput_filled_5 = generateDiamond({ type : "filled",height : 5 });
 let expectedOutput_filled_5 = "";
 expectedOutput_filled_5 += "  *  \n"; 
-expectedOutput_filled_5 += " ***\n"; 
+expectedOutput_filled_5 += " *** \n"; 
 expectedOutput_filled_5 += "*****\n"; 
-expectedOutput_filled_5 += " ***\n"; 
-expectedOutput_filled_5 += "  *  \n"; 
+expectedOutput_filled_5 += " *** \n"; 
+expectedOutput_filled_5 += "  *  "; 
 checkAssert("generateDiamond",["filled",5],actualOutput_filled_5,expectedOutput_filled_5);
 
 let actualOutput_filled_7 = generateDiamond({ type : "filled",height : 7 });
 let expectedOutput_filled_7 = "";
 expectedOutput_filled_7 += "   *   \n"; 
-expectedOutput_filled_7 += "  ***\n"; 
-expectedOutput_filled_7 += " *****\n"; 
+expectedOutput_filled_7 += "  ***  \n"; 
+expectedOutput_filled_7 += " ***** \n"; 
 expectedOutput_filled_7 += "*******\n"; 
-expectedOutput_filled_7 += " *****\n"; 
-expectedOutput_filled_7 += "  ***\n"; 
-expectedOutput_filled_7 += "   *   \n"; 
+expectedOutput_filled_7 += " ***** \n"; 
+expectedOutput_filled_7 += "  ***  \n"; 
+expectedOutput_filled_7 += "   *   "; 
 checkAssert("generateDiamond",["filled",7],actualOutput_filled_7,expectedOutput_filled_7);
 
 let actualOutput_hollow_5 = generateDiamond({ type : "hollow",height : 5 });
 let expectedOutput_hollow_5 = "";
 expectedOutput_hollow_5 += "  *  \n"; 
-expectedOutput_hollow_5 += " * *\n"; 
+expectedOutput_hollow_5 += " * * \n"; 
 expectedOutput_hollow_5 += "*   *\n"; 
-expectedOutput_hollow_5 += " * *\n"; 
-expectedOutput_hollow_5 += "  *  \n"; 
+expectedOutput_hollow_5 += " * * \n"; 
+expectedOutput_hollow_5 += "  *  "; 
 checkAssert("generateDiamond",["hollow",5],actualOutput_hollow_5,expectedOutput_hollow_5);
 
 let actualOutput_hollow_7 = generateDiamond({ type : "hollow",height : 7 });
 let expectedOutput_hollow_7 = "";
 expectedOutput_hollow_7 += "   *   \n"; 
-expectedOutput_hollow_7 += "  * *\n"; 
-expectedOutput_hollow_7 += " *   *\n"; 
+expectedOutput_hollow_7 += "  * *  \n"; 
+expectedOutput_hollow_7 += " *   * \n"; 
 expectedOutput_hollow_7 += "*     *\n"; 
-expectedOutput_hollow_7 += " *   *\n"; 
-expectedOutput_hollow_7 += "  * *\n"; 
-expectedOutput_hollow_7 += "   *  \n"; 
+expectedOutput_hollow_7 += " *   * \n"; 
+expectedOutput_hollow_7 += "  * *  \n"; 
+expectedOutput_hollow_7 += "   *  "; 
 checkAssert("generateDiamond",["hollow",5],actualOutput_hollow_5,expectedOutput_hollow_5);
 
 let actualOutput_angled_5 = generateDiamond({ type : "angled",height : 5 });
 let expectedOutput_angled_5 = "";
 expectedOutput_angled_5 += "  *  \n"; 
-expectedOutput_angled_5 += " / \\\n"; 
+expectedOutput_angled_5 += " / \\ \n"; 
 expectedOutput_angled_5 += "*   *\n"; 
-expectedOutput_angled_5 += " \\ /\n"; 
-expectedOutput_angled_5 += "  *  \n"; 
+expectedOutput_angled_5 += " \\ / \n"; 
+expectedOutput_angled_5 += "  *  "; 
 checkAssert("generateDiamond",["angled",5],actualOutput_angled_5,expectedOutput_angled_5);
 
 let actualOutput_angled_7 = generateDiamond({ type : "angled",height : 7 });
 let expectedOutput_angled_7 ="";
 expectedOutput_angled_7 += "   *   \n"
-expectedOutput_angled_7 += "  / \\\n"
-expectedOutput_angled_7 += " /   \\\n"
+expectedOutput_angled_7 += "  / \\  \n"
+expectedOutput_angled_7 += " /   \\ \n"
 expectedOutput_angled_7 += "*     *\n"
-expectedOutput_angled_7 += " \\   /\n"
-expectedOutput_angled_7 += "  \\ /\n"
-expectedOutput_angled_7 += "   *   \n"
+expectedOutput_angled_7 += " \\   / \n"
+expectedOutput_angled_7 += "  \\ /  \n"
+expectedOutput_angled_7 += "   *   "
 checkAssert("generateDiamond",["angled",7],actualOutput_angled_7,expectedOutput_angled_7);
