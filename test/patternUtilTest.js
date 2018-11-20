@@ -83,29 +83,24 @@ checkAssert("readUserInput",["angled",40],readUserInput(["node","createTriangle"
 /*--------------------------Test cases for leftJustify-----------------------------*/
 
 expected = " ";
-let justify = leftJustify(1);
-checkAssert("leftJustify",["",1],justify(""),expected);
+checkAssert("leftJustify",["",1],leftJustify("",1),expected);
 
 expected = "*";
-justify = leftJustify(1);
-checkAssert("leftJustify",["*",1],justify("*"),expected);
+checkAssert("leftJustify",["*",1],leftJustify("*",1),expected);
 
 expected = "*  ";
-justify = leftJustify(3);
-checkAssert("leftJustify",["*",3],justify("*"),expected);
+checkAssert("leftJustify",["*",3],leftJustify("*",3),expected);
 
 expected = "**  ";
-justify = leftJustify(4);
-checkAssert("leftJustify",["**",4],justify("**"),expected);
+checkAssert("leftJustify",["**",4],leftJustify("**",4),expected);
 
 expected = "******";
-justify = leftJustify(6);
-checkAssert("leftJustify",["******",6],justify("******"),expected);
+checkAssert("leftJustify",["******",6],leftJustify("******",6),expected);
 
 /*--------------------------Test cases for rightJustify---------------------------*/
 
 expected = " ";
-justify = rightJustify(1);
+let justify = rightJustify(1);
 checkAssert("rightJustify",[" ",1],justify(" "),expected);
 
 expected = "*";

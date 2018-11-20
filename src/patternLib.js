@@ -13,11 +13,10 @@ const hollowLine = generateLines("*"," ","*");
 const upperAngledLine = generateLines("/"," ","\\");
 
 const generateLeftTriangle = function(height){
-  let justify = leftJustify(height);
   let generateTriangle = [];
   for(let starIndex = 1; starIndex <= height; starIndex++){
     let line = repeatCharacter("*",starIndex).join("");
-    generateTriangle.push(justify(line));
+    generateTriangle.push(leftJustify(line,height));
   }
   return generateTriangle;
 }

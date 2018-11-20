@@ -4,8 +4,7 @@ const repeatCharacter = function(character,width){
 
 const rightJustify = function(width) {
   return function(message){
-    let justify = leftJustify(width);
-    return justify(message).split("").reverse().join("");
+    return leftJustify(message,width).split("").reverse().join("");
   }
 }
 
@@ -20,12 +19,10 @@ const createDiamondSeries = function(height){
   return series.concat(reversed);
 }
 
-const leftJustify = function(width) {
-  return function(message){
+const leftJustify = function(message,width) {
   let spaceCount = width - message.length;
   let spacedLine = repeatCharacter(" ",spaceCount).join("");
   return message+spacedLine;
-  }
 }
 
 const centerJustify = function(width) {
