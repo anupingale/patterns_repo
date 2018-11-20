@@ -6,14 +6,12 @@ const {readUserInput,
   centerJustify,
   generateSymbolPattern,
   generateLines,
-  starAtStartEnd,
   repeatCharacter} = patternUtil;
 
 const filledLine = generateLines("*","*","*");
 const dashLine = generateLines("-","-","-");
 const hollowLine = generateLines("*"," ","*");
 const upperAngledLine = generateLines("/"," ","\\");
-const lowerAngledLine = generateLines("\\"," ","/");
 
 const generateLeftTriangle = function(height){
   let generateTriangle = [];
@@ -60,10 +58,10 @@ const createAlternateRect= function(height,width){
 
 const createEmptyRect = function(height,width){
   let starLine = repeatCharacter("*",width).join("");
-  let hollowLine = starAtStartEnd(width);
+  let emptyLine = hollowLine(width);
   let emptyRect = [starLine];
   for(let index = 1; index < height-1; index++) {
-    emptyRect.push(hollowLine);
+    emptyRect.push(emptyLine);
   }
   emptyRect.push(starLine);
   return emptyRect;

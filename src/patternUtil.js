@@ -41,13 +41,6 @@ const generateLines = function(firstSymbol,middleSymbol,lastSymbol){
   }
 }
 
-const starAtStartEnd = function(widthForStar){
-  let line = "*";
-  line = line + repeatCharacter(" ",widthForStar-2).join("");
-  line = line + "*";
-  return line;
-}
-
 const generateSymbolPattern = function(symbol,length){
   let symbolRow = "";
   for(let symbolIndex = 1; symbolIndex <= length; symbolIndex++){
@@ -66,4 +59,4 @@ const readUserInput = function(args) {
   return { type : patternType, height : height, width : width}
 }
 
-module.exports = {createDiamondSeries, centerJustify, rightJustify, leftJustify, readUserInput, generateSymbolPattern, generateLines, starAtStartEnd, repeatCharacter};
+module.exports = {createDiamondSeries, centerJustify, rightJustify, leftJustify, readUserInput, generateSymbolPattern, generateLines, repeatCharacter};

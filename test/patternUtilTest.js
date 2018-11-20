@@ -7,7 +7,6 @@ const { rightJustify,
   generateLines,
   readUserInput,
   generateSymbolPattern,
-  starAtStartEnd,
   halfOfHeight,
   repeatCharacter,
   createDiamondSeries} = patternUtil;
@@ -37,17 +36,6 @@ checkAssert("repeatCharacter",["-",4],repeatCharacter("-",4),expected);
 
 expected = ['@','@','@','@','@','@'];
 checkAssert("repeatCharacter",["@",6],repeatCharacter("@",6),expected);
-
-
-/*---------------------------Test cases for starAtStartEnd----------------------------*/
-expected = "**";
-checkAssert("starAtStartEnd",["2"],starAtStartEnd(2),expected);
-
-expected = "* *";
-checkAssert("starAtStartEnd",["3"],starAtStartEnd(3),expected);
-
-expected = "*   *";
-checkAssert("starAtStartEnd",["5"],starAtStartEnd(5),expected);
 
 /*-------------------------Test cases for generateLines----------------------------*/
 expected = "***";
