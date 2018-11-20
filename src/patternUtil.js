@@ -2,8 +2,10 @@ const repeatCharacter = function(character,width){
   return new Array(width).fill(character);
 }
 
-const rightJustify = function(message,width) {
-  return leftJustify(message,width).split("").reverse().join("");
+const rightJustify = function(width) {
+  return function(message){
+    return leftJustify(message,width).split("").reverse().join("");
+  }
 }
 
 const createDiamondSeries = function(height){
@@ -41,14 +43,6 @@ const generateLines = function(firstSymbol,middleSymbol,lastSymbol){
   }
 }
 
-const generateSymbolPattern = function(symbol,length){
-  let symbolRow = "";
-  for(let symbolIndex = 1; symbolIndex <= length; symbolIndex++){
-    symbolRow += symbol;
-  }
-  return symbolRow;
-}
-
 const readUserInput = function(args) {
   let patternType = args[2];
   let height = +args[3];
@@ -59,4 +53,4 @@ const readUserInput = function(args) {
   return { type : patternType, height : height, width : width}
 }
 
-module.exports = {createDiamondSeries, centerJustify, rightJustify, leftJustify, readUserInput, generateSymbolPattern, generateLines, repeatCharacter};
+module.exports = {createDiamondSeries, centerJustify, rightJustify, leftJustify, readUserInput, generateLines, repeatCharacter};

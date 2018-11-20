@@ -4,7 +4,6 @@ const {readUserInput,
   createDiamondSeries,
   rightJustify,
   centerJustify,
-  generateSymbolPattern,
   generateLines,
   repeatCharacter} = patternUtil;
 
@@ -24,9 +23,10 @@ const generateLeftTriangle = function(height){
 
 const generateRightTriangle = function(height){
   let generateTriangle = [];
+  let justify = rightJustify(height);
   for(let starIndex = 1; starIndex <= height; starIndex++){
     let line = repeatCharacter("*",starIndex).join("");
-    generateTriangle.push(rightJustify(line,height));
+    generateTriangle.push(justify(line));
   }
   return generateTriangle;
 }

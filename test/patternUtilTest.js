@@ -6,7 +6,6 @@ const { rightJustify,
   centerJustify,
   generateLines,
   readUserInput,
-  generateSymbolPattern,
   halfOfHeight,
   repeatCharacter,
   createDiamondSeries} = patternUtil;
@@ -58,17 +57,6 @@ expected = "*---------------@";
 line = generateLines("*","-","@");
 checkAssert("generateLines",["*","-","@",17],line(17),expected);
 
-/*--------------------------Test cases for generatesymbolPattern--------------------*/
-
-expected = "*";
-checkAssert("generateSymbol",["*",1],generateSymbolPattern("*",1),expected);
-
-expected = "****";
-checkAssert("generateSymbol",["*",5],generateSymbolPattern("*",4),expected);
-
-expected = "----------"
-checkAssert("generateSymbol",["-",10],generateSymbolPattern("-",10),expected);
-
 /*---------------------------Test cases for readUserInput-------------------------*/
 
 expected = {type : "filled", height : 10, width : 7}
@@ -111,22 +99,26 @@ checkAssert("leftJustify",["******",6],leftJustify("******",6),expected);
 
 /*--------------------------Test cases for rightJustify---------------------------*/
 
-expected = " "
-checkAssert("rightJustify",[" ",1],rightJustify(" ",1),expected);
+expected = " ";
+let justify = rightJustify(1);
+checkAssert("rightJustify",[" ",1],justify(" "),expected);
 
-expected = "*"
-checkAssert("rightJustify",["*",1],rightJustify("*",1),expected);
+expected = "*";
+justify = rightJustify(1);
+checkAssert("rightJustify",["*",1],justify("*"),expected);
 
-expected = " *"
-checkAssert("rightJustify",["*",2],rightJustify("*",2),expected);
+expected = " *";
+justify = rightJustify(2); 
+checkAssert("rightJustify",["*",2],justify("*"),expected);
 
-expected = "   ***"
-checkAssert("rightJustify",["***",6],rightJustify("***",6),expected);
+expected = "   ***";
+justify = rightJustify(6)
+checkAssert("rightJustify",["***",6],justify("***"),expected);
 
 /*------------------------Test cases for centerJustify----------------------------*/
 
 expected = "  ";
-let justify = centerJustify(2);
+justify = centerJustify(2);
 checkAssert("centerJustify",["",2],justify(""),expected);
 
 expected = "*";
