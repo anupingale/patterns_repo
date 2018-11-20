@@ -23,10 +23,12 @@ const leftJustify = function(message,width) {
   return message+spacedLine;
 }
 
-const centerJustify = function(message,width) {
-  let spaceCount = width - message.length;
-  let spacedLine = new Array(spaceCount/2).fill(" ").join("");
-  return spacedLine+message+spacedLine;
+const centerJustify = function(width) {
+  return function(message) {
+    let spaceCount = width - message.length;
+    let spacedLine = new Array(spaceCount/2).fill(" ").join("");
+    return spacedLine+message+spacedLine;
+  }
 }
 
 const generateLines = function(firstSymbol,middleSymbol,lastSymbol){

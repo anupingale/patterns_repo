@@ -138,16 +138,21 @@ checkAssert("rightJustify",["***",6],rightJustify("***",6),expected);
 /*------------------------Test cases for centerJustify----------------------------*/
 
 expected = "  ";
-checkAssert("centerJustify",["",2],centerJustify("",2),expected);
+let justify = centerJustify(2);
+checkAssert("centerJustify",["",2],justify(""),expected);
 
 expected = "*";
-checkAssert("centerJustify",["*",1],centerJustify("*",1),expected);
+justify = centerJustify(1);
+checkAssert("centerJustify",["*",1],justify("*"),expected);
 
 expected = " * ";
-checkAssert("checkAssert",["*",3],centerJustify("*",3),expected);
+justify = centerJustify(3);
+checkAssert("checkAssert",["*",3],justify("*"),expected);
 
 expected = "   ***   ";
-checkAssert("checkAssert",["***",9],centerJustify("***",9),expected);
+justify = centerJustify(9);
+checkAssert("checkAssert",["***",9],justify("***"),expected);
 
 expected = " ***** ";
-checkAssert("checkAssert",["*****",7],centerJustify("*****",7),expected);
+justify = centerJustify(7);
+checkAssert("checkAssert",["*****",7],justify("*****"),expected);

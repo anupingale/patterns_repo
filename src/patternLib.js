@@ -83,29 +83,25 @@ const generateRectangle = function(patternSpecification) {
 
 const createFilledDiamond = function(height,peak){
   let seriesOfLines = createDiamondSeries(height);
-  let diamond =[peak];
-  let series = seriesOfLines.map(filledLine);
-  for (let index=0 ; index < seriesOfLines.length;index++){
-    diamond.push(centerJustify(series[index],height));
-  }
+  let justify = centerJustify(height);
+  let diamond = seriesOfLines.map(filledLine);
   diamond.push(peak);
-  return diamond;
+  diamond.unshift(peak);
+  return diamond.map(justify);
 }
 
 const createHollowDiamond = function(height,peak){
   let seriesOfLines = createDiamondSeries(height);
-  let diamond = [peak];
-  let series = seriesOfLines.map(hollowLine);
-  for (let index=0 ; index < seriesOfLines.length;index++){
-    diamond.push(centerJustify(series[index],height));
-  }
+  let justify = centerJustify(height);
+  let diamond = seriesOfLines.map(hollowLine);
   diamond.push(peak);
-  return diamond;
+  diamond.unshift(peak);
+  return diamond.map(justify);
 }
 
 const createAngledDiamond = function(height,peak){
+  let justify = centerJustify(height);
   let seriesOfLines = createDiamondSeries(height);
-  let angledDiamond = [peak];
   let halfWidth = (seriesOfLines.length/2);
   let upperHalf = seriesOfLines.slice(0,halfWidth);
   let upperPart = upperHalf.map(upperAngledLine);
@@ -114,11 +110,9 @@ const createAngledDiamond = function(height,peak){
   let lowerPart = lowerHalf.map(element => element.split("").reverse().join(""));
   upperPart.push(hollowLine(height));
   let diamond = upperPart.concat(lowerPart);
-  for (let index=0;index<diamond.length;index++){
-    angledDiamond.push(centerJustify(diamond[index],height));
-  }
-  angledDiamond.push(peak);
-  return angledDiamond;
+  diamond.push(peak);
+  diamond.unshift(peak);
+  return diamond.map(justify);
 }
 
 const generateDiamond = function(patternSpecification){
@@ -126,7 +120,7 @@ const generateDiamond = function(patternSpecification){
   let checkHeight  = [patternSpecification.height-1,patternSpecification.height];
   let height = checkHeight[patternSpecification.height % 2];
   let pattern = [];
-  let peak = centerJustify("*",height);
+  let peak = "*";
 
   pattern["filled"] = createFilledDiamond;
   pattern["hollow"] = createHollowDiamond;
